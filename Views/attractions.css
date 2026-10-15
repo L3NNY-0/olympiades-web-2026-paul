@@ -47,3 +47,88 @@ body {
         color: #705d1c;
     }
 }
+
+#intro {
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+
+    margin-top: 50px;
+    left: 0;
+    right: 0;
+
+
+    &::before {
+        width: 100%;
+        height: 100%;
+
+        content: "";
+        position: absolute;
+
+        background-image: url("../Images/atelier_dr_victoria.png");
+        background-size: cover;
+        background-attachment: scroll;
+
+        filter: blur(4px);
+
+        z-index: -1;
+    }
+}
+
+#text_intro h1 {
+    color: #d4af37;
+    font-weight: bolder;
+    font-size: 5em;
+    text-shadow: 2px 2px 2px black;
+}
+
+.titres {
+    color: #d4af37;
+    text-shadow: 2px 2px 2px black;
+}
+
+#text_intro p {
+    color: burlywood;
+    text-shadow: 2px 2px 2px black;
+}
+
+.univers {
+    margin-top: 20px;
+    background-color: #1a120b;
+    border-width: 5px;
+    border: solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.attraction {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    margin-top: 10px;
+    background-color: #2e2013;
+    border: solid black 1px;
+    border-radius: 15px;
+    padding: 10px;
+
+    & img {
+        border: solid black 1px;
+        border-radius: 5px;
+    }
+}
+
+p {
+    color: wheat;
+}
+
+.img_attractions {
+    height: 200px;
+    width: auto;
+}

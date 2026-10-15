@@ -7,11 +7,10 @@ function requeteBdd(string $requete)
         $db_conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         $requete = $db_conn->query($requete);
-        
-        while ($row = $requete->fetch()) {
-            # code...
-        }
+
+        return $requete->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $ex) {
         echo "Connexion impossible : " . $ex;
+        return [];
     }
 }
