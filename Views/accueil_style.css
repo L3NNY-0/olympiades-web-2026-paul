@@ -1,0 +1,32 @@
+
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: #4a3728;
+}
+
+#mainNav {
+    left: 0;
+    top: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    background-color: #1a120b;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+}
+
+.liens_nav {
+    text-decoration: none;
+    color: #f1f1f1;
+    font-weight: bolder;
+    font-size: larger;
+    &:hover {
+        color: burlywood;
+    }
+}
