@@ -1,12 +1,24 @@
-
 * {
     font-family: 'Courier New', Courier, monospace;
 }
 
-body {
-    background-color: #4a3728;
+/* ========== ENGRENAGES TOURNANTS ========== */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
+body {
+    background-color: #523722;
+}
+
+
+/* BARRE DE NAVIGATION */
 #mainNav {
     left: 0;
     top: 0;
@@ -19,14 +31,129 @@ body {
     align-items: center;
     width: 100%;
     height: 50px;
+    z-index: 5;
+
+    & p {
+        color: #d4af37;
+        font-weight: bolder;
+        font-size: xx-large;
+        width: 15%;
+    }
+}
+
+#section_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 75%;
 }
 
 .liens_nav {
     text-decoration: none;
-    color: #f1f1f1;
+    color: #d4af37;
     font-weight: bolder;
     font-size: larger;
+
     &:hover {
-        color: burlywood;
+        color: #705d1c;
     }
+}
+
+/* ENGRENAGES */
+.gear {
+    position: fixed;
+    z-index: 100;
+    opacity: 0.7;
+    animation: spin 10s linear infinite;
+}
+
+/* Engrenage gauche */
+.gear-left {
+    top: 30%;
+    left: 0;
+    width: 80px;
+    height: 80px;
+}
+
+/* Engrenage droit */
+.gear-right {
+    top: 60%;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    animation-direction: reverse;
+}
+
+.icones {
+    width: 100px;
+    height: auto;
+}
+
+/* Style des SVG */
+/* .gear svg {
+    width: 100%;
+    height: 100%;
+    fill: #cd7f32;
+    opacity: 0.8;
+} */
+
+/* ACCUEIL */
+#accueil {
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+
+    top: 50px;
+    left: 0;
+    right: 0;
+
+
+    &::before {
+        width: 100%;
+        height: 100%;
+
+        content: "";
+        position: absolute;
+
+        background-image: url("../Images/entree_parc.png");
+        background-size: cover;
+        background-attachment: scroll;
+
+        filter: blur(4px);
+
+        z-index: -1;
+    }
+}
+
+.text_accueil h1 {
+    color: #d4af37;
+    font-weight: bolder;
+    font-size: 10em;
+    text-shadow: 2px 2px 2px black;
+}
+
+.text_accueil h2 {
+    color: #d4af37;
+    text-shadow: 2px 2px 2px black;
+
+}
+
+#btn_attractions {
+    background-color: #705d1c;
+    border-width: 5px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 20px;
+    
+    text-decoration: none;
+    font-size: large;
+    font-weight: bold;
+    color: burlywood;
 }
