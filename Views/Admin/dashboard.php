@@ -26,6 +26,8 @@ include("../../Models/database.php")
         <div id="section_nav">
             <a class="liens_nav" href="#">SUPERVISION</a>
             <a class="liens_nav" href="Ajout/ajout.php">AJOUT</a>
+            <a class="liens_nav" href="Ajout/ajout.php">MODIFICATION</a>
+            <a class="liens_nav" href="Ajout/ajout.php">SUPPRESSION</a>
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>

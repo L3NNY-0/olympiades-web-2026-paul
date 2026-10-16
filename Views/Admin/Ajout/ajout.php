@@ -11,6 +11,8 @@ include("../../../Models/database.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
+        $db = new PDO("mysql:host=localhost;dbname=olympiade", "admin", "admin");
+
         $statut = 1;
         switch ($_POST['statut']) {
             case 'Ouvert':
@@ -26,23 +28,37 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 break;
         }
 
-        $db = new PDO("mysql:host=localhost;dbname=olympiade", "visiteur", "visiteur");
+        $img_attraction = substr($_FILES['url_img']['name'], 0, strlen($_FILES['url_img']['name']) - 4);
+        $filename = $img_attraction . '.png';
+        // $filename = $_FILES['url_img']['name'];
+        $id_univers = requeteBdd("SELECT id FROM univers WHERE nom='" . str_replace("'", "\'", $_POST['univers']) . "';");
 
-        // $stmt = $db->prepare("INSERT INTO attraction (nom, description, statut, taille_cm, url_img, id_univers) VALUES (:nom, :description, :statut, :taille_cm, :url_img, :id_univers);");
-        // $stmt->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
-        // $stmt->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
-        // $stmt->bindParam(':statut', $statut, PDO::PARAM_STR);
-        // $stmt->bindParam(':taille_cm', $_POST['taille_min'], PDO::PARAM_STR);
-        // $stmt->bindParam(':url_img', substr($_POST['url_img'], 0, strlen($_POST['url_img'])-4), PDO::PARAM_STR);
-        // $stmt->bindParam(':id_univers', $_POST['univers'], PDO::PARAM_STR);
-        // $stmt->execute();
+        $stmt = $db->prepare("INSERT INTO attraction (nom, description, statut, taille_cm, url_img, id_univers) VALUES (:nom, :description, :statut, :taille_cm, :url_img, :id_univers);");
+        $stmt->bindParam(':nom', $_POST['nom'], PDO::PARAM_STR);
+        $stmt->bindParam(':description', $_POST['description'], PDO::PARAM_STR);
+        $stmt->bindParam(':statut', $statut, PDO::PARAM_INT);
+        $stmt->bindParam(':taille_cm', $_POST['taille_min'], PDO::PARAM_INT);
+        $stmt->bindParam(':url_img', $img_attraction, PDO::PARAM_STR);
+        $stmt->bindParam(':id_univers', $id_univers[0]['id'], PDO::PARAM_INT);
+        $stmt->execute();
 
-        // header('Location: ajout.php');
-        // die();
+        $destination = "../../../Images/" . $filename;
 
-        echo "<p id='result'>INSERT INTO attraction (nom, description, statut, taille_cm, url_img, id_univers) VALUES (" . $_POST['nom'] . ", " . $_POST['description'] . ", " . $statut . ", " . $_POST['taille_min'] . ", " . substr($_POST['url_img'], 0, strlen($_POST['url_img'])-4) . ", " . $_POST['univers'] . ");</p>";
+        if (file_exists($destination)) {
+            exit("Une image portant ce nom existe déjà.");
+        }
+
+        if (!move_uploaded_file($_FILES['url_img']['tmp_name'], $destination)) {
+            exit("Impossible d'enregistrer l'image.");
+        }
+
+        header('Location: ajout.php');
+        exit;
+
+        // echo "<p id='result'>INSERT INTO attraction (nom, description, statut, taille_cm, url_img, id_univers) VALUES (" . $_POST['nom'] . ", " . $_POST['description'] . ", " . $statut . ", " . $_POST['taille_min'] . ", " . substr($_POST['url_img'], 0, strlen($_POST['url_img'])-4) . ", " . $id_univers[0]['id'] . ");</p>";
     } catch (PDOException $e) {
-        $error = 'Connexion impossible. Veuillez réessayer plus tard.';
+        echo "<p id='result'>" . $e . "</p>";
+        $error = 'Connexion impossible. Veuillez réessayer plus tard.' . $e;
     }
 }
 
@@ -61,8 +77,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <nav id="mainNav">
         <p class="liens_nav">STEAMLANDIA - Administrateur</p>
         <div id="section_nav">
-            <a class="liens_nav" href="#">SUPERVISION</a>
+            <a class="liens_nav" href="../dashboard.php">SUPERVISION</a>
             <a class="liens_nav" href="#">AJOUT</a>
+            <a class="liens_nav" href="../Modification/modif.php">MODIFICATION</a>
+            <a class="liens_nav" href="../Suppression/suppr.php">SUPPRESSION</a>
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>
@@ -70,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="univers">
         <h1 class="titres">Ajouter une nouvelle attraction</h1>
 
-        <form method="POST" action="ajout.php">
+        <form method="POST" action="ajout.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="nom">Nom</label>
                 <input type="text" name="nom" required>

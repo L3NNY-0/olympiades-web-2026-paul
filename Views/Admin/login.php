@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($_POST['password'], $user[1])) {
             session_regenerate_id(true);
             $_SESSION['admin'] = true;
+            $_SESSION['password'] = $_POST['password'];
 
             header('Location: dashboard.php');
             exit;
