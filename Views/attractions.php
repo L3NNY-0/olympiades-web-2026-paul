@@ -14,12 +14,20 @@
         <div id="section_nav">
             <a class="liens_nav" href="accueil.php">ACCUEIL</a>
             <a class="liens_nav" href="#">ATTRACTIONS</a>
-            <a class="liens_nav" href="horaires.php">HORAIRES</a>
             <a class="liens_nav" href="tarifs.php">TARIFS</a>
-            <a class="liens_nav" href="#">CONTACT</a>
+            <a class="liens_nav" href="Client/connexion.php">COMPTE CLIENT</a>
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>
+
+    <div class="gear gear-left">
+        <img class="icones" src="../Images/gear.png">
+
+    </div>
+
+    <div class="gear gear-right">
+        <img class="icones" src="../Images/gear.png">
+    </div>
 
     <div id="intro">
         <div id="text_intro">

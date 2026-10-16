@@ -43,6 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <div class="gear gear-left">
+        <img class="icones" src="../../Images/gear.png">
+
+    </div>
+
+    <div class="gear gear-right">
+        <img class="icones" src="../../Images/gear.png">
+    </div>
+
     <div id="login">
         <div class="login-container">
             <h1>Espace Administrateur</h1>

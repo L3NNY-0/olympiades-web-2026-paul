@@ -15,7 +15,7 @@
             <a class="liens_nav" href="#">ACCUEIL</a>
             <a class="liens_nav" href="attractions.php">ATTRACTIONS</a>
             <a class="liens_nav" href="tarifs.php">TARIFS</a>
-            <a class="liens_nav" href="#">CONTACT</a>
+            <a class="liens_nav" href="Client/connexion.php">COMPTE CLIENT</a>
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>
@@ -33,7 +33,7 @@
         <div class="text_accueil">
             <h1 class="titres">STEAMLANDIA</h1>
             <h2>Plongez dans un monde où la vapeur rencontre l'imaginaire, et où chaque engrenage raconte une histoire épique.</h2>
-            <a id="lien_attraction" href="attractions.php"><button id="btn_attractions">Découvrez nos nouvelles attractions</button></a>
+            <a id="lien_attraction" href="attractions.php"><button id="btn_attractions">Découvrez les attractions de la Cité Industrielle</button></a>
         </div>
     </div>
 

@@ -1,3 +1,12 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 * {
     font-family: 'Courier New', Courier, monospace;
@@ -26,7 +35,7 @@ body {
         color: #d4af37;
         font-weight: bolder;
         font-size: xx-large;
-        width: 15%;
+        width: 25%;
     }
 }
 
@@ -34,7 +43,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75%;
+    width: 65%;
 }
 
 .liens_nav {
@@ -46,4 +55,34 @@ body {
     &:hover {
         color: #705d1c;
     }
+}
+
+/* ENGRENAGES */
+.gear {
+    position: fixed;
+    z-index: 100;
+    opacity: 0.7;
+    animation: spin 10s linear infinite;
+}
+
+/* Engrenage gauche */
+.gear-left {
+    top: 30%;
+    left: 0;
+    width: 80px;
+    height: 80px;
+}
+
+/* Engrenage droit */
+.gear-right {
+    top: 60%;
+    right: 0;
+    width: 60px;
+    height: 60px;
+    animation-direction: reverse;
+}
+
+.icones {
+    width: 100px;
+    height: auto;
 }
