@@ -27,7 +27,7 @@ body {
         color: #d4af37;
         font-weight: bolder;
         font-size: xx-large;
-        /* width: 15%; */
+        width: 30%;
     }
 }
 
@@ -35,7 +35,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    /* width: 75%; */
+    width: 60%;
 }
 
 .liens_nav {
@@ -47,4 +47,43 @@ body {
     &:hover {
         color: #705d1c;
     }
+}
+
+.titres {
+    color: #d4af37;
+    text-shadow: 2px 2px 2px black;
+}
+
+.univers {
+    margin-top: 50px;
+    background-color: #1a120b;
+    border-width: 5px;
+    border: solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.attraction {
+    display: flex;
+    justify-content: space-between;
+    height: 200px;
+    margin-top: 10px;
+    background-color: #2e2013;
+    border: solid black 1px;
+    border-radius: 15px;
+    padding: 10px;
+
+    & img {
+        border: solid black 1px;
+        border-radius: 5px;
+    }
+}
+
+p {
+    color: wheat;
+}
+
+.img_attractions {
+    height: 200px;
+    width: auto;
 }

@@ -24,7 +24,8 @@ include("../../Models/database.php")
     <nav id="mainNav">
         <p class="liens_nav">STEAMLANDIA - Administrateur</p>
         <div id="section_nav">
-            <a class="liens_nav" href="#">GESTION DES ATTRACTIONS</a>
+            <a class="liens_nav" href="#">SUPERVISION</a>
+            <a class="liens_nav" href="Ajout/ajout.php">AJOUT</a>
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>
@@ -37,9 +38,8 @@ include("../../Models/database.php")
         foreach ($attractionsQDI as $row) {
             echo "<div class='attraction'><div class='text_attraction'><h3 class='titres'>" . htmlspecialchars($row['nom']) . "</h3>";
             echo "<p>" . htmlspecialchars($row['description']) . "</p><br>";
-            echo "<p>Taille min. : " . htmlspecialchars($row['taille_cm']) . " cm - Statut : " . htmlspecialchars($row['statut']) . "</p>";
-            echo "<a href='Attractions/" . htmlspecialchars($row['url_img']) . ".php'><button class='btn_attractions'>Voir plus</button></a></div>";
-            echo "<img class='img_attractions' src='../Images/" . htmlspecialchars($row['url_img']) . ".png' alt='Photographie de " . htmlspecialchars($row['nom']) . "'></div>";
+            echo "<p>Taille min. : " . htmlspecialchars($row['taille_cm']) . " cm - Statut : " . htmlspecialchars($row['statut']) . "</p></div>";
+            echo "<img class='img_attractions' src='../../Images/" . htmlspecialchars($row['url_img']) . ".png' alt='Photographie de " . htmlspecialchars($row['nom']) . "'></div>";
         }
         ?>
     </div>
