@@ -14,7 +14,6 @@
         <div id="section_nav">
             <a class="liens_nav" href="../accueil.php">ACCUEIL</a>
             <a class="liens_nav" href="../attractions.php">ATTRACTIONS</a>
-            <a class="liens_nav" href="../horaires.php">HORAIRES</a>
             <a class="liens_nav" href="../tarifs.php">TARIFS</a>
             <a class="liens_nav" href="../Client/connexion.php">COMPTE CLIENT</a>
         </div>

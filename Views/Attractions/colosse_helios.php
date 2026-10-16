@@ -14,9 +14,8 @@
         <div id="section_nav">
             <a class="liens_nav" href="../accueil.php">ACCUEIL</a>
             <a class="liens_nav" href="../attractions.php">ATTRACTIONS</a>
-            <a class="liens_nav" href="../horaires.php">HORAIRES</a>
             <a class="liens_nav" href="../tarifs.php">TARIFS</a>
-            <a class="liens_nav" href="#">CONTACT</a>
+            <a class="liens_nav" href="#">COMPTE CLIENT</a>
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>

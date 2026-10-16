@@ -26,7 +26,7 @@ body {
         color: #d4af37;
         font-weight: bolder;
         font-size: xx-large;
-        width: 15%;
+        width: 25%;
     }
 }
 
@@ -34,7 +34,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75%;
+    width: 65%;
 }
 
 .liens_nav {

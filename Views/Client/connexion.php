@@ -19,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($user && password_verify($_POST['password'], $user[2])) {
             session_regenerate_id(true);
             $_SESSION['connection'] = true;
+            $_SESSION['id'] = $user[0];
+            $_SESSION['email'] = $user[1];
             $_SESSION['password'] = $_POST['password'];
 
             if (!is_null($user[3]) && !is_null($user[4])) {
@@ -26,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['prenom'] = $user[4];
             }
 
-            header('Location: accueil.php');
+            header('Location: accueil_client.php');
             exit;
         } else {
             $error = 'Identifiants incorrects.';
