@@ -2,6 +2,15 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
     background-color: #523722;
     margin: 0;
@@ -48,6 +57,10 @@ body {
     &:hover {
         color: #705d1c;
     }
+}
+
+#contenu {
+    animation: fadeIn 2s ease;
 }
 
 .titres {

@@ -3,6 +3,15 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
     background-color: #523722;
 }
@@ -46,4 +55,54 @@ body {
     &:hover {
         color: #705d1c;
     }
+}
+
+#accueil {
+    width: 100%;
+    height: 100vh;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    text-align: center;
+
+    top: 50px;
+    left: 0;
+    right: 0;
+
+
+    &::before {
+        width: 100%;
+        height: 100%;
+
+        content: "";
+        position: absolute;
+
+        background-image: url("../Images/entree_parc.png");
+        background-size: cover;
+        background-attachment: scroll;
+
+        filter: blur(4px);
+
+        z-index: -1;
+    }
+}
+
+.text_accueil {
+    animation: fadeIn 2s ease;
+}
+
+.text_accueil h1 {
+    color: #d4af37;
+    font-weight: bolder;
+    font-size: 10em;
+    text-shadow: 2px 2px 2px black;
+}
+
+.text_accueil h2 {
+    color: #d4af37;
+    text-shadow: 2px 2px 2px black;
 }

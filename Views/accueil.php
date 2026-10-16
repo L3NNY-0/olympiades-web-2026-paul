@@ -14,7 +14,6 @@
         <div id="section_nav">
             <a class="liens_nav" href="#">ACCUEIL</a>
             <a class="liens_nav" href="attractions.php">ATTRACTIONS</a>
-            <a class="liens_nav" href="horaires.php">HORAIRES</a>
             <a class="liens_nav" href="tarifs.php">TARIFS</a>
             <a class="liens_nav" href="#">CONTACT</a>
         </div>
@@ -32,13 +31,45 @@
 
     <div id="accueil">
         <div class="text_accueil">
-            <h1>STEAMLANDIA</h1>
+            <h1 class="titres">STEAMLANDIA</h1>
             <h2>Plongez dans un monde où la vapeur rencontre l'imaginaire, et où chaque engrenage raconte une histoire épique.</h2>
             <a id="lien_attraction" href="attractions.php"><button id="btn_attractions">Découvrez nos nouvelles attractions</button></a>
         </div>
     </div>
 
-    
+    <div id="horaires">
+        <h2 class="titres">Nos horaires</h2>
+        <div id="liste_horaires">
+            <div class="h_jour">
+                <h3>Lundi</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+            <div class="h_jour">
+                <h3>Mardi</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+            <div class="h_jour">
+                <h3>Mercredi</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+            <div class="h_jour">
+                <h3>Jeudi</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+            <div class="h_jour">
+                <h3>Vendredi</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+            <div class="h_jour">
+                <h3>Samedi</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+            <div class="h_jour">
+                <h3>Dimanche</h3>
+                <p>10:00 - 19:00</p>
+            </div>
+        </div>
+    </div>    
 
 </body>
 

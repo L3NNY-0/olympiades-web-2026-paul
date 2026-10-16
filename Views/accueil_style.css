@@ -13,6 +13,15 @@
     }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
     background-color: #523722;
 }
@@ -37,7 +46,8 @@ body {
         color: #d4af37;
         font-weight: bolder;
         font-size: xx-large;
-        width: 15%;
+        /* text-align: center; */
+        width: 25%;
     }
 }
 
@@ -45,7 +55,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75%;
+    width: 65%;
 }
 
 .liens_nav {
@@ -89,14 +99,6 @@ body {
     height: auto;
 }
 
-/* Style des SVG */
-/* .gear svg {
-    width: 100%;
-    height: 100%;
-    fill: #cd7f32;
-    opacity: 0.8;
-} */
-
 /* ACCUEIL */
 #accueil {
     width: 100%;
@@ -132,11 +134,18 @@ body {
     }
 }
 
-.text_accueil h1 {
+.titres {
     color: #d4af37;
+    text-shadow: 2px 2px 2px black;
+}
+
+.text_accueil {
+    animation: fadeIn 2s ease;
+}
+
+.text_accueil h1 {
     font-weight: bolder;
     font-size: 10em;
-    text-shadow: 2px 2px 2px black;
 }
 
 .text_accueil h2 {
@@ -156,4 +165,19 @@ body {
     font-size: large;
     font-weight: bold;
     color: burlywood;
+}
+
+#horaires {
+    margin-top: 20px;
+    background-color: #1a120b;
+    border-width: 5px;
+    border: solid black;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+#liste_horaires {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

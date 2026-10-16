@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STEAMLANDIA - Les horaires</title>
-    <link rel="stylesheet" href="attractions.css">
+    <link rel="stylesheet" href="horaires.css">
 </head>
 
 <body>
@@ -20,6 +20,13 @@
         </div>
         <!-- <button class="hamburger" id="hamburgerBtn">☰</button> -->
     </nav>
+
+    <div id="accueil">
+        <div class="text_accueil">
+            <h1>STEAMLANDIA</h1>
+            <h2>Nos horaires</h2>
+        </div>
+    </div>
 </body>
 
 </html>

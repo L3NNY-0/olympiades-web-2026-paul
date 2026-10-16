@@ -2,6 +2,15 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 body {
     background-color: #523722;
     margin: 0;
@@ -72,6 +81,7 @@ body {
     border: solid black 1px;
     border-radius: 15px;
     padding: 10px;
+    animation: fadeIn 2s ease;
 
     & img {
         border: solid black 1px;

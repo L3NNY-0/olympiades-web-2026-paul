@@ -44,14 +44,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $destination = "../../../Images/" . $filename;
 
-        if (file_exists($destination)) {
-            exit("Une image portant ce nom existe déjà.");
-        }
-
-        if (!move_uploaded_file($_FILES['url_img']['tmp_name'], $destination)) {
-            exit("Impossible d'enregistrer l'image.");
-        }
-
         header('Location: ajout.php');
         exit;
 
@@ -86,69 +78,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </nav>
 
     <div class="univers">
-        <h1 class="titres">Ajouter une nouvelle attraction</h1>
+        <div id="contenu">
+            <h1 class="titres">Ajouter une nouvelle attraction</h1>
 
-        <form method="POST" action="ajout.php" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="nom">Nom</label>
-                <input type="text" name="nom" required>
-            </div>
+            <form method="POST" action="ajout.php" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input type="text" name="nom" required>
+                </div>
 
-            <div class="form-group">
-                <label for="description">Description</label>
-                <input type="text" name="description" required>
-            </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" name="description" required>
+                </div>
 
-            <div class="form-group">
-                <label for="statut">Statut</label>
-                <select name="statut" required>
-                    <option>Ouvert</option>
-                    <option>Fermé</option>
-                    <option>En panne</option>
-                </select>
-            </div>
+                <div class="form-group">
+                    <label for="statut">Statut</label>
+                    <select name="statut" required>
+                        <option>Ouvert</option>
+                        <option>Fermé</option>
+                        <option>En panne</option>
+                    </select>
+                </div>
 
-            <div class="form-group">
-                <label for="taille_min">Taille minimale (en cm)</label>
-                <input type="number" name="taille_min" required>
-            </div>
+                <div class="form-group">
+                    <label for="taille_min">Taille minimale (en cm)</label>
+                    <input type="number" name="taille_min" required>
+                </div>
 
-            <div class="form-group">
-                <label for="url_img">Image de présentation</label>
-                <input type="file" name="url_img" required>
-            </div>
+                <div class="form-group">
+                    <label for="url_img">Image de présentation</label>
+                    <input type="file" name="url_img" required>
+                </div>
 
-            <div class="form-group">
-                <label for="univers">Univers lié</label>
-                <select name="univers" required>
-                    <?php
-                    try {
-                        $db = new PDO("mysql:host=localhost;dbname=olympiade", "visiteur", "visiteur");
+                <div class="form-group">
+                    <label for="univers">Univers lié</label>
+                    <select name="univers" required>
+                        <?php
+                        try {
+                            $db = new PDO("mysql:host=localhost;dbname=olympiade", "visiteur", "visiteur");
 
-                        $stmt = $db->query("SELECT nom FROM univers;");
+                            $stmt = $db->query("SELECT nom FROM univers;");
 
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo '<option>' . htmlspecialchars($row['nom']) . '</option>';
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<option>' . htmlspecialchars($row['nom']) . '</option>';
+                            }
+                        } catch (PDOException $e) {
+                            $error = 'Connexion impossible. Veuillez réessayer plus tard.';
                         }
-                    } catch (PDOException $e) {
-                        $error = 'Connexion impossible. Veuillez réessayer plus tard.';
-                    }
-                    ?>
-                </select>
-            </div>
+                        ?>
+                    </select>
+                </div>
 
-            <button type="submit" class="submit-btn">Ajouter</button>
-        </form>
-        <?php
+                <button type="submit" class="submit-btn">Ajouter</button>
+            </form>
+            <h1 class="titres">Vue d'ensemble</h1>
+            <?php
 
-        $attractionsQDI = requeteBdd("SELECT * FROM attraction;");
-        foreach ($attractionsQDI as $row) {
-            echo "<div class='attraction'><div class='text_attraction'><h3 class='titres'>" . htmlspecialchars($row['nom']) . "</h3>";
-            echo "<p>" . htmlspecialchars($row['description']) . "</p><br>";
-            echo "<p>Taille min. : " . htmlspecialchars($row['taille_cm']) . " cm - Statut : " . htmlspecialchars($row['statut']) . "</p></div>";
-            echo "<img class='img_attractions' src='../../../Images/" . htmlspecialchars($row['url_img']) . ".png' alt='Photographie de " . htmlspecialchars($row['nom']) . "'></div>";
-        }
-        ?>
+            $attractionsQDI = requeteBdd("SELECT * FROM attraction;");
+            foreach ($attractionsQDI as $row) {
+                echo "<div class='attraction'><div class='text_attraction'><h3 class='titres'>" . htmlspecialchars($row['nom']) . "</h3>";
+                echo "<p>" . htmlspecialchars($row['description']) . "</p><br>";
+                echo "<p>Taille min. : " . htmlspecialchars($row['taille_cm']) . " cm - Statut : " . htmlspecialchars($row['statut']) . "</p></div>";
+                echo "<img class='img_attractions' src='../../../Images/" . htmlspecialchars($row['url_img']) . ".png' alt='Photographie de " . htmlspecialchars($row['nom']) . "'></div>";
+            }
+            ?>
+        </div>
     </div>
 </body>
 
