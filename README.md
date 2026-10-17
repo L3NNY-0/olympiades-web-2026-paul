@@ -1,5 +1,5 @@
 # Olympiades des métiers
-## Métier n°17 - Tech
+## Métier n°17 - Technologies web
 
 ### Présentation du site
 
@@ -114,3 +114,17 @@ Il était demandé de réaliser une page d'erreur propre à afficher si l'utilis
 
 Le serveur ne calcule pas le total des billets, et n'effectue pas de faux paiement.
 La limitation à 2000 billets par jour n'a pas pu être réalisée.
+
+
+
+### Choix techniques
+
+#### Hebergement local
+
+J'ai décidé d'utiliser XAMPP comme solution web locale car il s'agit d'un outil accessible, avec une interface lisible et avec lequel j'ai l'habitude de travailler.
+MariaDB est aussi un Système de Gestion de Base de Données Relationnelles que j'apprécie.
+
+#### Figma
+ 
+Le choix du design graphique s'est fait en manipulant Figma et les composants qu'il propose.
+Lien Figma : https://www.figma.com/design/OdaTpBSjpk32YszDJGF360/Sans-titre?node-id=0-1&t=TxAFEgNTL0ZTrniW-1
