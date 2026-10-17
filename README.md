@@ -10,39 +10,6 @@ Le site permet entre autres de visualiser la liste des attractions proposées pa
 
 Au cours de sa visite, l'utilisateur est guidé sur chacune des pages du site. Il peut par exemple consulter les attractions du parc, triéss par univers thématique, et voir davantage d'informations sur chacune d'entre elles sur leur page dédiée. Il découvre le thème du parc, ses univers et attractions correspondantes ainsi que les différents tarifs.
 
-#### Espace Client
-
-Chaque utilisateur est en mesure de se créer un compte gratuit identifiable par son adresse mail. Une adresse mail ne peut être assignée qu'à un seul utilisateur, un seul compte client. Le mot de passe est hashé et cette variable n'est jamais stockée en clair dans la base de données. Le client peut aussi choisir de saisir un nom et un prénom.
-Les adresses mail doivent avoir un format valide (example@host.com), et les mots de passe doivent comporter au moins 12 caractères.  
-La création du compte est refusée si :
-- L'adresse mail est déjà utilisée pour un autre compte ou non valide ;
-- Le mot de passe ne contient pas suffisamment de caractères ;
-- Un problème de connexion à la base de données survient.
-
-Après s'être inscrit, l'utilisateur est redirigé sur l'interface de connexion, sur laquelle il doit saisir à nouveau ses identifiants de connexion pour accéder à son espace client.
-
-Une fois connecté, l'utilisateur peut voir la liste complète de ses réservations
-Il a aussi accès à une interface Billetterie, sur laquelle il peut réserver une place selon 3 forfaits différents :
-- Adulte de plus de 12 ans pour 20€ ;
-- Enfant entre 3 et 11 ans pour 15€ ;
-- Junior de moins de 3 ans gratuit.
-Une fois la commande réalisée, son billet est affiché dans m'onglet Mes Réservations.
-
-#### Espace Administrateur
-
-Le site dispose d'un Compte Administrateur, accessible uniquement sur authentification sécurisée. Il doit d'abord s'identifier en saisissant l'adresse 'localhost/Views/Admin/login.php', non accessible pour un visiteur classique.
-L'administrateur saisit ensuite ses identifiants de connexion :
-- Identifiant : "admin" ;
-- Mot de passe : "admin" ;
-
-Une fois authentifié, ce dernier à accès à la supervision de toutes les attractions du parc sur la page d'accueil.
-Il dispose de 3 autres onglets lui permettant l'ajout, la modification et la suppression d'attractions.
-
-Pour valider la création d'une attraction, il doit saisir un nom, une description courte, un statut par défaut, une taille d'accès minimale en centimètres, sélectionner l'univers rattaché à cette attraction, et choisir une image de présentation.
-
-L'ajout et la modification sont effectives immédiatement au clic du bouton correspondant, et sur validation du formulaire par le serveur.
-La suppression en revanche, doit être validée une seconde fois par l'administrateur par le biais d'une pop-up de confirmation.
-
 
 
 ### Déploiement du projet
@@ -77,17 +44,58 @@ Chaque requête est effectuée par un utilisateur adapté, et chaque utilisateur
 
 #### Palier 1 - Le parc en ligne
 
-L'utilisateur débite sa navigation sur une page d'accueil parlante : nom du parc et slogan, avec animations fluides.
+1. Page d'accueil
+L'utilisateur déuite sa navigation sur une page d'accueil parlante : nom du parc et slogan, avec animations fluides.
 Il dispose aussi d'un bouton de découverte des attractions le menant dans l'onglet Attractions.
 
+2. Page Attractions
 La page Attractions comporte le même design que la page d'accueil et liste l'intégralité des attractions mises en ligne par l'administrateur.
 Chaque attraction est affichée grâce à une requête SQL à l'affichage de la page. Elles sont alors présentées et triées par univers, affichant son nom, sa description, la taille minimale d'accès et son statut. Un bouton "Voir plus" est aussi apposé sur chaque bandeau, menant à une page de description plus complète de chacune d'entre elles.
 
+3. Page par attraction
+Chaque attraction dispose donc d'une page dédiée unique, affichant plus précisemment chaque attribut de cette dernière. L'image d'accueil en arrière-plan correspond à la vignette de présentation affichée sur la liste globale de la page Attractions.
 
 
+#### Palier 2 - Espace Administrateur
 
+1. Connexion
+L'administrateur se connecte avec un identifiant et un mot de passe. Ce mot de passe n'est jamais affiché ni enregistré en clair, il est toujours hashé, transformé de façon irréversible avec l'algorithme de chiffrement BCRYPT.
 
+2. Accès
+Les pages de l'espace administrateur ne sont jamais accessibles sans connexion, si un utilisateur tente d'afficher le tableau de bord par exemple, il est immédiatement redirigé vers le formulaire de connexion. Ce formulaire n'est d'ailleurs accessible qu'en saisissant son URL, aucun lien cliquable n'est présent sur le site.
+Tous les formulaires utilisent des requêtes préparées et sont donc protégés contre les injections SQL.
 
+3. Fonctions
+L'administrateur peut ajouter, modifier, et supprimer une attraction ainsi que changer son statut. Une confirmation est demandée avant chaque suppression, et le serveur refuse un formulaire mal rempli.
+
+Le site dispose d'un Compte Administrateur, accessible uniquement sur authentification sécurisée. Il doit d'abord s'identifier en saisissant l'adresse 'localhost/Views/Admin/login.php', non accessible pour un visiteur classique.
+L'administrateur saisit ensuite ses identifiants de connexion :
+- Identifiant : "admin" ;
+- Mot de passe : "admin" ;
+
+Pour valider la création d'une attraction, il doit saisir un nom, une description courte, un statut par défaut, une taille d'accès minimale en centimètres, sélectionner l'univers rattaché à cette attraction, et choisir une image de présentation.
+
+L'ajout et la modification sont effectives immédiatement au clic du bouton correspondant, et sur validation du formulaire par le serveur.
+La suppression en revanche, doit être validée une seconde fois par l'administrateur par le biais d'une pop-up de confirmation en JavaScript.
+
+#### Palier 3 - Billetterie
+
+1. Création de compte
+Chaque utilisateur est en mesure de se créer un compte gratuit identifiable par son adresse mail. Une adresse mail ne peut être assignée qu'à un seul utilisateur, un seul compte client. Le mot de passe est hashé et cette variable n'est jamais stockée en clair dans la base de données. Le client peut aussi choisir de saisir un nom et un prénom.
+Les adresses mail doivent avoir un format valide (example@host.com), et les mots de passe doivent comporter au moins 12 caractères.  
+La création du compte est refusée si :
+- L'adresse mail est déjà utilisée pour un autre compte ou non valide ;
+- Le mot de passe ne contient pas suffisamment de caractères ;
+- Un problème de connexion à la base de données survient.
+Après s'être inscrit, l'utilisateur est redirigé sur l'interface de connexion, sur laquelle il doit saisir à nouveau ses identifiants de connexion pour accéder à son espace client.
+
+2. Billets
+Une fois connecté, l'utilisateur peut voir la liste complète de ses réservations
+Il a aussi accès à une interface Billetterie, sur laquelle il peut réserver une place selon 3 forfaits différents :
+- Adulte de plus de 12 ans pour 20€ ;
+- Enfant entre 3 et 11 ans pour 15€ ;
+- Junior de moins de 3 ans gratuit.
+Une fois la commande réalisée, son billet est affiché dans m'onglet Mes Réservations.
 
 
 
@@ -101,3 +109,8 @@ Ce statut est affiché sous la forme d'entier dans certaines pages et non comme 
 #### Page d'erreur customisée
 
 Il était demandé de réaliser une page d'erreur propre à afficher si l'utilisateur essaie d'accéder à une page non existante, ce qui n'a pas pu être fait.
+
+#### Billetterie
+
+Le serveur ne calcule pas le total des billets, et n'effectue pas de faux paiement.
+La limitation à 2000 billets par jour n'a pas pu être réalisée.
