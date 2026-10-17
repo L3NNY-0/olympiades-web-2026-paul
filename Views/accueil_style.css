@@ -2,7 +2,6 @@
     font-family: 'Courier New', Courier, monospace;
 }
 
-/* ========== ENGRENAGES TOURNANTS ========== */
 @keyframes spin {
     from {
         transform: rotate(0deg);

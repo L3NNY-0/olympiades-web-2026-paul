@@ -93,3 +93,13 @@ INSERT INTO attraction (nom, description, statut, taille_cm, url_img, id_univers
 INSERT INTO attraction (nom, description, statut, taille_cm, url_img, id_univers) VALUES ("L'atelier du Dr. Victoria", "Plongez au coeur de l'usine d'une des meres fondatrices de la Cite dans cette visite a couper le souffle.", 1, 140, "atelier_dr_victoria", 2);
 
 INSERT INTO users (username, password, nom, prenom) VALUES ("admin", "$2y$10$8FAZ9SDxDJXbLAKzf0lPWu7cFxG8nOMuU1Vw1nCOfJN/st2bwpimK", NULL, NULL);
+
+
+## Utilisateurs
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY 'admin';
+GRANT SELECT, INSERT, UPDATE, DELETE ON 'olympiade'.* TO 'admin'@'localhost';
+GRANT SELECT ON 'mysql'.'user' TO 'admin'@'localhost';
+
+CREATE USER IF NOT EXISTS 'visiteur'@'localhost' IDENTIFIED BY 'visiteur';
+GRANT SELECT ON 'olympiade'.* TO 'visiteur'@'localhost';
+GRANT INSERT ON 'olympiade'.'users' TO 'visiteur'@'localhost';
